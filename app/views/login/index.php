@@ -3,7 +3,7 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>You are not logged in</h1>
+                <h1>Login Form</h1>
 
 								<?php if (isset($_SESSION['error'])): ?>
 										<div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
