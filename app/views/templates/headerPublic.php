@@ -18,13 +18,11 @@ if (isset($_SESSION['auth']) == 1) {
 </head>
 <body>
   <div class="container mt-5">
-    <!-- Simple centered heading added here -->
     <div class="text-center mb-4">
       <h2 class="fw-light">Welcome to Reminder App!</h2>
       <hr class="w-25 mx-auto my-3">
     </div>
 
-    <!-- Your existing form content remains unchanged below -->
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-4">
      

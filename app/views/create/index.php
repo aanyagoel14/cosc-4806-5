@@ -12,8 +12,7 @@
         <?php unset($_SESSION['success']); ?>
     <?php endif; ?>
 
-    <form action="/create/process" method="post">
-        <div class="form-group">
+    <form action="/create/process" method="post">        <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" required>
         </div>
