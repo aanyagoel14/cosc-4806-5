@@ -1,4 +1,4 @@
-<footer class="bg-light mt-auto py-3 border-top">  <!-- Added auto margin top and top border -->
+<footer class="bg-light mt-auto py-3 border-top">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -7,25 +7,14 @@
                     &copy; <?= date('Y'); ?> Reminder App | Created by Aanya Goel
                 </p>
 
-                <!-- Optional: Simple contact link -->
+                <!-- Contact link with underline -->
                 <p class="mb-0 small">
-                    <a href="mailto:your.email@example.com" class="text-decoration-none text-muted">
+                    <a href="mailto:your.email@example.com" 
+                       class="text-decoration-none text-muted"
+                       style="text-decoration: underline !important;">  <!-- Added inline style -->
                         <i class="bi bi-envelope"></i> Contact Me
                     </a>
                 </p>
-
-                <!-- Optional: Social media links -->
-                <div class="mt-2">
-                    <a href="#" class="text-decoration-none text-muted me-2">
-                        <i class="bi bi-github"></i>
-                    </a>
-                    <a href="#" class="text-decoration-none text-muted me-2">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                    <a href="#" class="text-decoration-none text-muted">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
