@@ -57,12 +57,13 @@ class Reminder {
             $statement = $db->prepare("SHOW TABLES LIKE 'login_attempts'");
             $statement->execute();
             $tableExists = $statement->rowCount() > 0;
-
+    
             if ($tableExists) {
+                // Join on username instead of user_id
                 $statement = $db->prepare("
                     SELECT u.username, COUNT(l.id) as login_count
                     FROM users u
-                    LEFT JOIN login_attempts l ON u.id = l.user_id
+                    LEFT JOIN login_attempts l ON u.username = l.username
                     GROUP BY u.id
                     ORDER BY login_count DESC
                 ");
