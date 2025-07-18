@@ -31,6 +31,11 @@ if (!isset($_SESSION['auth'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="/reminders"><i class="bi bi-list-check me-1"></i> My Reminders</a>
                     </li>
+                    <?php if (isset($_SESSION['auth']['username']) && $_SESSION['auth']['username'] === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reports"><i class="bi bi-graph-up me-1"></i> Reports</a>
+                    </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/about"><i class="bi bi-person me-1"></i> About</a>
                     </li>

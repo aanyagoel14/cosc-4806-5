@@ -1,18 +1,29 @@
 <?php
-
 class Reports extends Controller {
-    public $components = array('Auth');
+    private function require_admin() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== 1 || 
+            !isset($_SESSION['username']) || strtolower($_SESSION['username']) !== 'admin') {
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-        if (!$this->Auth->loggedIn() || $this->Auth->user('role') !== 'admin') {
-            $this->Session->setFlash('Admin access required');
-            $this->redirect('/');
+            if (!headers_sent()) {
+                header('Location: /home');
+            }
+            exit();
         }
     }
 
     public function index() {
-        $this->loadModel('Reminder');
-        $this->set('reminders', $this->Reminder->find('all'));
+        $this->require_admin();
+
+        $reminder = $this->model('Reminder');
+        $data = [
+            'all_reminders' => $reminder->get_all_reminders_admin(),
+            'most_reminders' => $reminder->get_users_with_most_reminders(),
+            'login_counts' => $reminder->get_login_counts()
+        ];
+
+        $this->view('reports/index', $data);
     }
 }
