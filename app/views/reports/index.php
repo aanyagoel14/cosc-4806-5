@@ -75,7 +75,7 @@
             <?php endif; ?>
         </div>
 
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
             <h3>User Login Counts</h3>
             <?php if (empty($data['login_counts'])): ?>
                 <p>No data available.</p>
@@ -100,4 +100,4 @@
         </div>
     </div>
 </div>
-<?php require_once 'app/views/templates/footer.php' ?> -->
+<?php require_once 'app/views/templates/footer.php' ?>
