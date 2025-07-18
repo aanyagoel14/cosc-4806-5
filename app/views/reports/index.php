@@ -100,4 +100,59 @@
         </div>
     </div>
 </div>
+<!-- Add this before the footer -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Reminders Distribution</div>
+            <div class="card-body">
+                <canvas id="remindersChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Login Activity</div>
+            <div class="card-body">
+                <canvas id="loginsChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Prepare data for charts
+const reminderData = {
+    labels: [<?= implode(',', array_map(fn($u) => "'".htmlspecialchars($u['username'])."'", $data['most_reminders'])) ?>],
+    datasets: [{
+        label: 'Reminders Created',
+        data: [<?= implode(',', array_column($data['most_reminders'], 'reminder_count')) ?>],
+        backgroundColor: '#007bff'
+    }]
+};
+
+const loginData = {
+    labels: [<?= implode(',', array_map(fn($l) => "'".htmlspecialchars($l['username'])."'", $data['login_counts'])) ?>],
+    datasets: [{
+        label: 'Login Count',
+        data: [<?= implode(',', array_column($data['login_counts'], 'login_count')) ?>],
+        backgroundColor: '#28a745'
+    }]
+};
+
+// Create charts when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    new Chart(document.getElementById('remindersChart'), {
+        type: 'bar',
+        data: reminderData,
+        options: { responsive: true }
+    });
+
+    new Chart(document.getElementById('loginsChart'), {
+        type: 'bar',
+        data: loginData,
+        options: { responsive: true }
+    });
+});
+</script>
 <?php require_once 'app/views/templates/footer.php' ?>
