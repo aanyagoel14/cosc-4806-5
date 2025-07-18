@@ -49,7 +49,7 @@
             <?php endif; ?>
         </div>
     </div>
-<!-- 
+
     <div class="row mt-4">
         <div class="col-md-6">
             <h3>Users with Most Reminders</h3>
@@ -75,7 +75,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <h3>User Login Counts</h3>
             <?php if (empty($data['login_counts'])): ?>
                 <p>No data available.</p>
