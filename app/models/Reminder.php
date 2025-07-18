@@ -51,34 +51,34 @@ class Reminder {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function get_login_counts() {
-        $db = db_connect();
-        try {
-            $statement = $db->prepare("SHOW TABLES LIKE 'login_attempts'");
-            $statement->execute();
-            $tableExists = $statement->rowCount() > 0;
+    // public function get_login_counts() {
+    //     $db = db_connect();
+    //     try {
+    //         $statement = $db->prepare("SHOW TABLES LIKE 'login_attempts'");
+    //         $statement->execute();
+    //         $tableExists = $statement->rowCount() > 0;
 
-            if ($tableExists) {
-                $statement = $db->prepare("
-                    SELECT u.username, COUNT(l.id) as login_count
-                    FROM users u
-                    LEFT JOIN login_attempts l ON u.id = l.user_id
-                    GROUP BY u.id
-                    ORDER BY login_count DESC
-                ");
-                $statement->execute();
-                return $statement->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                $statement = $db->prepare("
-                    SELECT u.username, 0 as login_count
-                    FROM users u
-                    ORDER BY u.username ASC
-                ");
-                $statement->execute();
-                return $statement->fetchAll(PDO::FETCH_ASSOC);
-            }
-        } catch (PDOException $e) {
-            return [];
-        }
+    //         if ($tableExists) {
+    //             $statement = $db->prepare("
+    //                 SELECT u.username, COUNT(l.id) as login_count
+    //                 FROM users u
+    //                 LEFT JOIN login_attempts l ON u.id = l.user_id
+    //                 GROUP BY u.id
+    //                 ORDER BY login_count DESC
+    //             ");
+    //             $statement->execute();
+    //             return $statement->fetchAll(PDO::FETCH_ASSOC);
+    //         } else {
+    //             $statement = $db->prepare("
+    //                 SELECT u.username, 0 as login_count
+    //                 FROM users u
+    //                 ORDER BY u.username ASC
+    //             ");
+    //             $statement->execute();
+    //             return $statement->fetchAll(PDO::FETCH_ASSOC);
+    //         }
+    //     } catch (PDOException $e) {
+    //         return [];
+    //     }
     }
 }
